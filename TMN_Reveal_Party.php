@@ -65,7 +65,7 @@
 	#contact-conatiner li label{display:block;font-size: 14px;  margin: 10px 0 4px 0;}
 	#contact-conatiner li input{height: 28px;width: 280px;text-indent: 5px;}
 	#contact-conatiner li .submit{height: 25px;width: 80px;margin-top: 25px;color:#FFF;background-color: #656565;border: 1px solid #000;}
-	
+
 </style>
 <?php
 $successMsg ='';
@@ -74,29 +74,30 @@ if(isset($_POST["tmnevents_submit"]) && ($_POST["tmnevents_submit"]=="submit")){
     $surname = $_POST['surname'];
     $email = $_POST['email'];
     $email_message = "Form details below.\n\n";
-	
+
     function clean_string($string) {
         $bad = array("content-type","bcc:","to:","cc:","href");
         return str_replace($bad,"",$string);
     }
-    $messageTemp = '<!DOCTYPE html>'. 
-		'<html><head>'. 
-		'<meta http-equiv="content-type" content="text/html"><meta charset="UTF-8">'. 
-		'<title>Email notification</title>'. 
-		'</head>'. 
-		'<body>'. 
-		'<div id="outer" style="width: 80%;margin: 0 auto;margin-top: 10px;">'. 
+    $messageTemp = '<!DOCTYPE html>'.
+		'<html><head>'.
+		'<meta http-equiv="content-type" content="text/html"><meta charset="UTF-8">'.
+		'<title>Email notification</title>'.
+		'</head>'.
+		'<body>'.
+		'<div id="outer" style="width: 80%;margin: 0 auto;margin-top: 10px;">'.
 		   '<div id="Top" style="width: 78%;margin: 0 auto;background-color: #fff;font-family: Open Sans,Arial,sans-serif;font-size: 15px;font-weight: normal;line-height: 1em;color: #444;margin-top: 10px;">'.
 		   '<p>Hi,<br><br> <b>Form details below</b></p>'.
 		   '<p><b><lable>First Name:</label></b>'.$firstName.'</p>'.
 		   '<p><b><lable>Last Name:</label></b>'.$surname.'</p>'.
 		   '<p><b><lable>Email Id:</label></b>'.$email.'<br></br>Thanks<br>'.$firstName.'</p>'.
-		   '</div>'. 
-		  '</div>'. 
+		   '</div>'.
+		  '</div>'.
 		'</body></html>';
-		 $to 		= "Kelsey.Puncochar2@target.com"; 
+		 //$to 		= "Kelsey.Puncochar2@target.com";
+     $to 		= "ganesan.d2@target.com";
     	 $subject 	= "RSVP Request";
-    	 $message 	= $messageTemp; 
+    	 $message 	= $messageTemp;
     	 $headers = 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
     mail($to,$subject,$message,$headers);
     $successMsg="Sucess";
@@ -105,8 +106,8 @@ if(isset($_POST["tmnevents_submit"]) && ($_POST["tmnevents_submit"]=="submit")){
 <div id="wrapper">
   <h1><span class="screen-reader-only">Target Media network trade mark </span>thank you<br> for your RSVP</h1>
   <p class="content">We're so glad you're able to join us! Come ready to celebrate the big news-and the launch of Target Guest Access.</p>
-<?php if(isset($successMsg) && $successMsg == "Sucess"){?> 
-<div id="contact-conatiner">Thanks for Sharing your Informations!</div>
+<?php if(isset($successMsg) && $successMsg == "Sucess"){?>
+<div id="contact-conatiner">Thanks for Sharing your Information!</div>
 <?php }else{?>
  <form name="frmContact" id="frmContact" action="#" method="post">
 	<ul id="contact-conatiner">
